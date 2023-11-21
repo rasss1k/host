@@ -1,0 +1,85 @@
+{% extends 'dashboard.html' %}
+{% block title %}
+	<title>Main</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container one">
+  <div class="slider">
+        <div class="slider__row">
+          <div class="slider__item active">
+            <img
+              src="{{ url_for('static',filename='media/first.jpeg') }}"
+              alt="#"
+            />
+          </div>
+          <div class="slider__item">
+            <img
+              src="{{ url_for('static',filename='media/second.jpeg') }}"
+              alt="#"
+            />
+          </div>
+          <div class="slider__item">
+            <img
+              src="{{ url_for('static',filename='media/third.jpeg') }}"
+              alt="#"
+            />
+          </div>
+          <div class="slider__item">
+            <img src="{{ url_for('static',filename='media/fourth.jpeg') }}" alt="#" />
+          </div>
+          <div class="slider__item">
+            <img src="{{ url_for('static',filename='media/fifth.jpeg') }}" alt="#" />
+          </div>
+          <div class="slider__item">
+            <img
+              src="{{ url_for('static',filename='media/sixth.jpeg') }}"
+              alt="#"
+            />
+          </div>
+        </div>
+        <div class="prev__btn">
+          <img src="{{ url_for('static',filename='media/strelka__levo.svg') }}" alt="#" />
+        </div>
+        <div class="next__btn">
+          <img src="{{ url_for('static',filename='media/strelka__right.svg') }}" alt="#" />
+        </div>
+      </div>
+      <div class="slider__dots">
+        <div class="dot__item active"></div>
+        <div class="dot__item"></div>
+        <div class="dot__item"></div>
+        <div class="dot__item"></div>
+        <div class="dot__item"></div>
+        <div class="dot__item"></div>
+      </div>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    {% for el in item %}
+<div class="col">
+          <div class="card shadow-sm">
+                  <img width="420" height="340" src="{{ url_for('static', filename='uploads/' + el.img) }}">
+            <div class="card-body">
+              <p class="card-text">{{ el.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a class="text-decoration-none text-black" href="/index/{{ el.id }}">About</a></button>                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a class="text-decoration-none text-black" href="/index/buy/{{ el.id }}">Buy</a></button>
+                </div>
+                <h1 class="card-title pricing-card-title">{{ el.price }}<small class="text-body-secondary fw-light">₸</small></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+
+
+      </div>
+    </div>
+</div>
+{% endblock %}
